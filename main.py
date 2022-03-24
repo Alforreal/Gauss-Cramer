@@ -1,5 +1,5 @@
 from kivy.config import Config
-Config.set('graphics','resizable',0)
+Config.set('graphics','resizable',1)
 from ctypes import cdll, c_int
 from kivy.uix.label import Label
 from kivy.lang import Builder
@@ -11,7 +11,6 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 import gc, webbrowser
 from kivy.core.window import Window
-from kivy.metrics import sp
 
 # initializing c++ variables:
 lib = cdll.LoadLibrary("./library.so")
@@ -243,7 +242,7 @@ class MainApp(App):
         return sm
     def changetwovars(self):
         sm.current = 'twovars'
-        Window.size = (800, 800)
+        Window.size = (560, 400)
     def changethreevars(self):
         sm.current = 'threevars'
         Window.size = (800, 600)
@@ -266,7 +265,7 @@ class MainApp(App):
             inp = (c_int * 6)(*inp_raw)
             lib.Krammer2(inp)
             sm.current = 'sltwo'
-
+            Window.size = (600, 600)
             self.labeldelta.text = "Δ = " + str(self.in1.text) + " * " + str(self.in5.text) + " + " + str(abs(int(self.in2.text))) + " * " + str(abs(int(self.in4.text))) + " = " + str(lib.twoDelta0ret())
             self.labeldeltax.text = "ΔX = " + str(self.in3.text) + " * " + str(self.in5.text) + " + " + str(abs(int(self.in2.text))) + " * " + str(abs(int(self.in6.text))) + " = " + str(lib.twoDelta1ret())
             self.labeldeltay.text = "ΔY = " + str(self.in1.text) + " * " + str(self.in6.text) + " + " + str(abs(int(self.in3.text))) + " * " + str(abs(int(self.in4.text))) + " = " + str(lib.twoDelta2ret())
