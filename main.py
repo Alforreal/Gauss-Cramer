@@ -6,7 +6,6 @@ from kivy.lang import Builder
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.app import App
-# from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
@@ -25,7 +24,7 @@ class RoundButtonvar(Button):
 
 class MainApp(App):
     def build(self):
-        Window.size = (800, 500)
+        Window.size = (800, 450)
         loginscreen = Screen(name='login')
         twovars = Screen(name='twovars')
         sltwo = Screen(name='sltwo')
@@ -33,19 +32,18 @@ class MainApp(App):
         krammersol = Screen(name='krammersol')
         gausssol = Screen(name='gausssol')
 
-        layout = GridLayout(cols=2, padding=(10, 10), spacing=(10, 10))
-        twovarsbtn = RoundButtonvar(text='2 variables', font_size=32, size_hint_y = None, size_hint_x = None, size = (255, 180), pos=(200, 230))
-        threevarsbtn = RoundButtonvar(text='3 variables', font_size=32, size_hint_y = None, size_hint_x = None, size = (255, 180), pos=(430, 230))
+        layoutbtn = GridLayout(cols=2, spacing=(100, 0), padding=(20, Window.size[1]/2 - 100))
+        twovarsbtn = RoundButtonvar(text='2 variables', font_size=40, size_hint_y = None, size_hint_x = None, size = (330, 200))
+        threevarsbtn = RoundButtonvar(text='3 variables', font_size=40, size_hint_y = None, size_hint_x = None, size = (330, 200))
+        layoutbtn.add_widget(twovarsbtn)
+        layoutbtn.add_widget(threevarsbtn)
+        github = Button(text='Made by Alnotreally', font_size=20, size_hint_y = None, size_hint_x = None, size=(50, 100), color = (0, 102/255, 204/255, 1), underline = True, background_color = (0, 0, 0, 0), pos=(650, 1))
+        loginscreen.add_widget(layoutbtn)
+        loginscreen.add_widget(github)
+        sm.add_widget(loginscreen)
+        github.bind(on_press=lambda x:self.github())
         twovarsbtn.bind(on_press = lambda x:self.changetwovars())
         threevarsbtn.bind(on_press = lambda x:self.changethreevars())
-        layout.add_widget(threevarsbtn)
-        layout.add_widget(twovarsbtn)
-        # gausswiki.bind(on_press=lambda x:webbrowser.open_new_tab("https://en.wikipedia.org/wiki/Gaussian_elimination#"))
-        # krammerwiki.bind(on_press=lambda x:webbrowser.open_new_tab("https://en.wikipedia.org/wiki/Cramer%27s_rule"))
-        # labelbtn.bind(on_press=lambda x:webbrowser.open_new_tab("https://github.com/Alforreal"))
-
-        loginscreen.add_widget(layout)
-        sm.add_widget(loginscreen)
 
 
         #layout for twovars screen:
@@ -251,7 +249,7 @@ class MainApp(App):
         Window.size = (800, 600)
     def back(self):
         sm.current = 'login'
-        Window.size = (800, 500)
+        Window.size = (800, 450)
     def github(self):
         webbrowser.open_new_tab("https://github.com/Alforreal")
     def cramer(self):
