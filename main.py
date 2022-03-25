@@ -1,29 +1,38 @@
 from kivy.config import Config
 Config.set('graphics','resizable',1)
-from ctypes import cdll, c_int
 from kivy.uix.label import Label
-from kivy.lang import Builder
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
-from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.lang import Builder
-import gc, webbrowser
 from kivy.core.window import Window
+from kivy.app import App
+from ctypes import cdll, c_int
+import gc
+from webbrowser import open_new_tab
 
 # initializing c++ variables:
 lib = cdll.LoadLibrary("./library.so")
 Builder.load_file("window.kv")
-sm = ScreenManager()
+sm = ScreenManager(transition=NoTransition())
 
 class RoundButtonvar(Button):
     pass
-
-
+class RoundButtonBack(Button):
+    pass
+class RoundButtonSolve(Button):
+    pass
+class GitButton(Button):
+    def change_image(self):
+        self.ids.gitimage.source = 'icons/Gitmark.png'
+    def change_image_off(self):
+        self.ids.gitimage.source = 'icons/Github_mark.png'
+        open_new_tab("https://github.com/Alforreal")
 class MainApp(App):
     def build(self):
-        Window.size = (800, 450)
+        Window.size = (600, 337.5)
+        self.title = "Gauss-Cramer"
         loginscreen = Screen(name='login')
         twovars = Screen(name='twovars')
         sltwo = Screen(name='sltwo')
@@ -31,42 +40,41 @@ class MainApp(App):
         krammersol = Screen(name='krammersol')
         gausssol = Screen(name='gausssol')
 
-        layoutbtn = GridLayout(cols=2, spacing=(100, 0), padding=(20, Window.size[1]/2 - 100))
-        twovarsbtn = RoundButtonvar(text='2 variables', font_size=40, size_hint_y = None, size_hint_x = None, size = (330, 200))
-        threevarsbtn = RoundButtonvar(text='3 variables', font_size=40, size_hint_y = None, size_hint_x = None, size = (330, 200))
+        layoutbtn = GridLayout(cols=2, spacing=(60, 0), padding=(38, Window.size[1]/2 - 65))
+        twovarsbtn = RoundButtonvar(text='2 variables', font_name='Caviar_Dreams_Bold', font_size=30, size_hint_y = None, size_hint_x = None, size = (230, 100))
+        threevarsbtn = RoundButtonvar(text='3 variables',font_name='Caviar_Dreams_Bold', font_size=30, size_hint_y = None, size_hint_x = None, size = (230, 100))
         layoutbtn.add_widget(twovarsbtn)
         layoutbtn.add_widget(threevarsbtn)
-        github = Button(text='Made by Alnotreally', font_size=20, size_hint_y = None, size_hint_x = None, size=(50, 100), color = (0, 102/255, 204/255, 1), underline = True, background_color = (0, 0, 0, 0), pos=(650, 1))
+        github = GitButton(font_size=20, size_hint_y = None, size_hint_x = None, size=(50, 50), pos=(Window.size[0]-60, Window.size[1]-60))
         loginscreen.add_widget(layoutbtn)
         loginscreen.add_widget(github)
         sm.add_widget(loginscreen)
-        github.bind(on_press=lambda x:self.github())
-        twovarsbtn.bind(on_press = lambda x:self.changetwovars())
-        threevarsbtn.bind(on_press = lambda x:self.changethreevars())
+        twovarsbtn.bind(on_release = lambda x:self.changetwovars())
+        threevarsbtn.bind(on_release = lambda x:self.changethreevars())
 
 
         #layout for twovars screen:
         layout2 = GridLayout(cols=5, rows=3, padding = (30, 30))
-        self.in1 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.in2 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.in3 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.in4 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.in5 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.in6 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        btnlayout0 = GridLayout(cols = 2, padding=(30, 250))
-        backbtn = RoundButtonvar(text='Go back', font_size=32, size_hint_x = None, size_hint_y = None, size = (150, 100))
-        processbtn = Button(text="Solve via Cramer", font_size = 32, size_hint_x = None, size_hint_y = None, size = (300, 100))
+        self.in1 = TextInput(text='', font_size=50, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.in2 = TextInput(text='', font_size=50, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.in3 = TextInput(text='', font_size=50, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.in4 = TextInput(text='', font_size=50, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.in5 = TextInput(text='', font_size=50, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.in6 = TextInput(text='', font_size=50, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        btnlayout0 = GridLayout(cols = 2, padding=(30, 250), spacing=(50, 0))
+        backbtn = RoundButtonBack(text='Go back', font_size=32, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, size = (150, 100))
+        processbtn = RoundButtonSolve(text="Solve via Cramer", font_size = 32, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, size = (300, 100))
         
         #adding widgets to the layout
         layout2.add_widget(self.in1)
-        layout2.add_widget(Label(text='X + ', font_size = 50, size_hint_x = None, size_hint_y = None))
+        layout2.add_widget(Label(text='X + ', font_size = 50, font_name='Caviar_Dreams_Bold', size_hint_x = None, size_hint_y = None))
         layout2.add_widget(self.in2)
-        layout2.add_widget(Label(text='Y = ', font_size = 50, size_hint_x = None, size_hint_y = None))
+        layout2.add_widget(Label(text='Y = ', font_size = 50, font_name='Caviar_Dreams_Bold', size_hint_x = None, size_hint_y = None))
         layout2.add_widget(self.in3)
         layout2.add_widget(self.in4)
-        layout2.add_widget(Label(text='X + ', font_size = 50, size_hint_x = None, size_hint_y = None))
+        layout2.add_widget(Label(text='X + ', font_size = 50, font_name='Caviar_Dreams_Bold', size_hint_x = None, size_hint_y = None))
         layout2.add_widget(self.in5)
-        layout2.add_widget(Label(text='Y = ', font_size = 50, size_hint_x = None, size_hint_y = None))
+        layout2.add_widget(Label(text='Y = ', font_size = 50, font_name='Caviar_Dreams_Bold', size_hint_x = None, size_hint_y = None))
         layout2.add_widget(self.in6)
         btnlayout0.add_widget(backbtn)
         btnlayout0.add_widget(processbtn)
@@ -248,13 +256,11 @@ class MainApp(App):
         Window.size = (800, 600)
     def back(self):
         sm.current = 'login'
-        Window.size = (800, 450)
-    def github(self):
-        webbrowser.open_new_tab("https://github.com/Alforreal")
+        Window.size = (600, 337.5)
     def cramer(self):
-        webbrowser.open_new_tab("https://en.wikipedia.org/wiki/Cramer%27s_rule")
+        open_new_tab("https://en.wikipedia.org/wiki/Cramer%27s_rule")
     def gauss(self):
-        webbrowser.open_new_tab("https://en.wikipedia.org/wiki/Gaussian_elimination#")
+        open_new_tab("https://en.wikipedia.org/wiki/Gaussian_elimination#")
 
     
         

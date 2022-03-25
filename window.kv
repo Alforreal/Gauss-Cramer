@@ -1,11 +1,47 @@
 #:kivy 2.0
+
 <RoundButtonvar@Button>:
     background_color: (0, 0, 0, 0)
     background_normal: ''
     canvas.before:
         Color:
-            rgba:  (10/255, 111/255, 148/255, 1)
+            id: main_color
+            rgba:  (84/255, 70/255, 219/255, 1)
         RoundedRectangle:
             pos: self.pos
             size: self.size
-            radius: [20]
+            radius: [30]
+
+<RoundButtonBack@Button>:
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            id: main_color
+            rgba:  (191/255, 0, 0, 1)
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [30]
+
+<RoundButtonSolve@Button>:
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            id: main_color
+            rgba:  (28/255, 194/255, 6/255, 1)
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [30]
+
+<GitButton@Button>:
+    background_color: (0, 0, 0, 0)
+    on_press: root.change_image()
+    on_release: root.change_image_off()
+    Image:
+        id: gitimage
+        source: 'icons/Github_mark.png'
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
