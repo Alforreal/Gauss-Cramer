@@ -314,23 +314,22 @@ class MainApp(App):
             file.close()
             for i in range(len(input)):
                 input[i].replace("\n", "")
+            first = [0 for i in range(4)]
+            second = [0 for i in range(3)]
+            third = [0 for i in range(3)]
             lcm1 = int(input[0])
             lcm2 = int(input[1])
-            lcm3 = int(input[5])
-            lcm4 = int(input[6])
-            lcm5 = int(input[14])
-            lcm6 = int(input[15])
-            first = [0 for i in range(4)]
-            for i in range(4):
-                first[i] = int(input[i+7])
-            
-            third = [0 for i in range(3)]
-            for i in range(3):
-                third[i] = int(input[i+11])
-            result = [int(input[16]), int(input[17])]
-            second = [0 for i in range(3)]
             for i in range(3):
                 second[i] = int(input[i+2])
+            lcm3 = int(input[5])
+            lcm4 = int(input[6])
+            for i in range(4):
+                first[i] = int(input[i+7])
+            lcm5 = int(input[14])
+            for i in range(3):
+                third[i] = int(input[i+11])
+            lcm6 = int(input[15])
+            result = [int(input[16]), int(input[17])]
             del input
             gc.collect()
 

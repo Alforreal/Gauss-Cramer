@@ -16,6 +16,13 @@ extern "C"
     void Krammer2(int inp[2][3]);
     void Krammer3(int inp[3][4]);
     void Gauss3(int inp[3][4]);
+    int threeDelta0ret();
+    int threeDelta1ret();
+    int threeDelta2ret();
+    int threeDelta3ret();
+    int twoDelta0ret();
+    int twoDelta1ret();
+    int twoDelta2ret();
 }
 
 #endif
