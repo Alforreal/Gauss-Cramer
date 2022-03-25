@@ -67,14 +67,14 @@ class MainApp(App):
         
         #adding widgets to the layout
         layout2.add_widget(self.in1)
-        layout2.add_widget(Label(text='X + ', font_size = 50, font_name='Caviar_Dreams_Bold', size_hint_x = None, size_hint_y = None))
+        layout2.add_widget(Label(text='x + ', font_size = 50, font_name='Caviar_Dreams_Bold', size_hint_x = None, size_hint_y = None))
         layout2.add_widget(self.in2)
-        layout2.add_widget(Label(text='Y = ', font_size = 50, font_name='Caviar_Dreams_Bold', size_hint_x = None, size_hint_y = None))
+        layout2.add_widget(Label(text='y = ', font_size = 50, font_name='Caviar_Dreams_Bold', size_hint_x = None, size_hint_y = None))
         layout2.add_widget(self.in3)
         layout2.add_widget(self.in4)
-        layout2.add_widget(Label(text='X + ', font_size = 50, font_name='Caviar_Dreams_Bold', size_hint_x = None, size_hint_y = None))
+        layout2.add_widget(Label(text='x + ', font_size = 50, font_name='Caviar_Dreams_Bold', size_hint_x = None, size_hint_y = None))
         layout2.add_widget(self.in5)
-        layout2.add_widget(Label(text='Y = ', font_size = 50, font_name='Caviar_Dreams_Bold', size_hint_x = None, size_hint_y = None))
+        layout2.add_widget(Label(text='y = ', font_size = 50, font_name='Caviar_Dreams_Bold', size_hint_x = None, size_hint_y = None))
         layout2.add_widget(self.in6)
         btnlayout0.add_widget(backbtn)
         btnlayout0.add_widget(processbtn)
@@ -89,15 +89,15 @@ class MainApp(App):
         
         #SLTWO SCREEN 
         #creating a layout for the screen:
-        layout3 = GridLayout(cols=1, padding = (30, 50))
-        layout3.add_widget(Label(text="Solution:", font_size=40))
-        self.labeldelta = Label(text="", font_size=40)
-        self.labeldeltax = Label(text="", font_size=40)
-        self.labeldeltay = Label(text="", font_size=40)
-        self.labelx = Label(text="", font_size=40)
-        self.labely = Label(text="", font_size=40)
-        self.answ = Label(text="", font_size=40)
-        backbtn = Button(text='Go back', font_size=32, size_hint_x = None, size_hint_y = None, size = (150, 100))
+        layout3 = GridLayout(cols=1, padding = (30, 30))
+        layout3.add_widget(Label(text="Solution:", font_name='Caviar_Dreams_Bold', font_size=40))
+        self.labeldelta = Label(text="", font_name='Caviar_Dreams_Bold', font_size=40)
+        self.labeldeltax = Label(text="", font_name='Caviar_Dreams_Bold', font_size=40)
+        self.labeldeltay = Label(text="", font_name='Caviar_Dreams_Bold', font_size=40)
+        self.labelx = Label(text="", font_name='Caviar_Dreams_Bold', font_size=40)
+        self.labely = Label(text="", font_name='Caviar_Dreams_Bold', font_size=40)
+        self.answ = Label(text="", font_name='Caviar_Dreams_Bold', font_size=40)
+        backbtn = RoundButtonBack(text='Go back', font_size=32, size_hint_x = None, font_name='Caviar_Dreams_Bold',  size_hint_y = None, size = (150, 100))
         backbtn.bind(on_press = lambda x:self.back())
         
         layout3.add_widget(self.labeldelta)
@@ -105,6 +105,7 @@ class MainApp(App):
         layout3.add_widget(self.labeldeltay)
         layout3.add_widget(self.labelx)
         layout3.add_widget(self.labely)
+        # layout3.add_widget(Label(text="", font_name='Caviar_Dreams_Bold', font_size=40))
         layout3.add_widget(self.answ)
         layout3.add_widget(backbtn)
 
@@ -273,10 +274,10 @@ class MainApp(App):
             sm.current = 'sltwo'
             Window.size = (600, 600)
             self.labeldelta.text = "Δ = " + str(self.in1.text) + " * " + str(self.in5.text) + " + " + str(abs(int(self.in2.text))) + " * " + str(abs(int(self.in4.text))) + " = " + str(lib.twoDelta0ret())
-            self.labeldeltax.text = "ΔX = " + str(self.in3.text) + " * " + str(self.in5.text) + " + " + str(abs(int(self.in2.text))) + " * " + str(abs(int(self.in6.text))) + " = " + str(lib.twoDelta1ret())
-            self.labeldeltay.text = "ΔY = " + str(self.in1.text) + " * " + str(self.in6.text) + " + " + str(abs(int(self.in3.text))) + " * " + str(abs(int(self.in4.text))) + " = " + str(lib.twoDelta2ret())
-            self.labelx.text = "X = ΔX/Δ = " + str(lib.twoDelta1ret()) + "/" + str(lib.twoDelta0ret()) + " = " + str(lib.Xret())
-            self.labely.text = "Y = ΔY/Δ = " + str(lib.twoDelta2ret()) + "/" + str(lib.twoDelta0ret()) + " = " + str(lib.Yret())
+            self.labeldeltax.text = "Δx = " + str(self.in3.text) + " * " + str(self.in5.text) + " + " + str(abs(int(self.in2.text))) + " * " + str(abs(int(self.in6.text))) + " = " + str(lib.twoDelta1ret())
+            self.labeldeltay.text = "Δy = " + str(self.in1.text) + " * " + str(self.in6.text) + " + " + str(abs(int(self.in3.text))) + " * " + str(abs(int(self.in4.text))) + " = " + str(lib.twoDelta2ret())
+            self.labelx.text = "x = Δx/Δ = " + str(lib.twoDelta1ret()) + "/" + str(lib.twoDelta0ret()) + " = " + str(lib.Xret())
+            self.labely.text = "y = Δy/Δ = " + str(lib.twoDelta2ret()) + "/" + str(lib.twoDelta0ret()) + " = " + str(lib.Yret())
             self.answ.text = "Answer: (" + str(lib.Xret()) + ", " + str(lib.Yret()) + ")"
             
         except ValueError:  # if you don't enter an number inside one of the texinput boxes you will get ValueError 
