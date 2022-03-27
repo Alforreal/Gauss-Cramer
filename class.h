@@ -6,7 +6,7 @@ extern int Y;
 extern int Z;
 extern int delta2[3];
 extern int delta3[4];
-
+extern bool divbyzero;
 
 extern "C"
 {

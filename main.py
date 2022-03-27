@@ -235,7 +235,7 @@ class MainApp(App):
         self.result2 = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
 
         self.answx = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
-        self.answy =  Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
+        self.answy = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
         self.answz = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
         buttonback = RoundButtonBack(text="Go back", font_size = 32, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, size = (150, 75))
         
@@ -575,6 +575,11 @@ class MainApp(App):
  
         except ValueError:
             print("oopsie! You didn't enter anything!")
+        except IndexError:
+            if(lib.divbyzeroret()):
+                self.entry0.text = "It seems like you got unlucky :("
+                self.second0.text = "If you're seeing this, then probably"
+                self.result0.text = "your system has division by zero"
 
 if __name__ == "__main__":
     MainApp().run()
