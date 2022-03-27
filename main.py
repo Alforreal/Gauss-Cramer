@@ -23,8 +23,7 @@ class RoundButtonBack(Button):
     pass
 class RoundButtonSolve(Button):
     pass
-class RoundButton(Button):
-    pass
+
 class GitButton(Button):
     def change_image(self):
         self.ids.gitimage.source = 'icons/Gitmark.png'
@@ -56,7 +55,7 @@ class MainApp(App):
 
 
         #layout for twovars screen:
-        layout2 = GridLayout(cols=5, rows=3, padding = (30, 30))
+        layout2 = GridLayout(cols=5, rows=3, padding = (30, 10))
         self.in1 = TextInput(text='', font_size=50, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
         self.in2 = TextInput(text='', font_size=50, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
         self.in3 = TextInput(text='', font_size=50, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
@@ -64,8 +63,8 @@ class MainApp(App):
         self.in5 = TextInput(text='', font_size=50, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
         self.in6 = TextInput(text='', font_size=50, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
         btnlayout0 = GridLayout(cols = 2, padding=(30, 250), spacing=(50, 0))
-        backbtn = RoundButtonBack(text='Go back', font_size=32, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, size = (150, 100))
-        processbtn = RoundButtonSolve(text="Solve via Cramer", font_size = 32, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, size = (300, 100))
+        backbtn = RoundButtonBack(text='Go back', font_size=32, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, size = (150, 75))
+        processbtn = RoundButtonSolve(text="Solve via Cramer", font_size = 32, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, size = (300, 75))
         
         #adding widgets to the layout
         layout2.add_widget(self.in1)
@@ -100,8 +99,8 @@ class MainApp(App):
         self.labely = Label(text="", font_name='Caviar_Dreams_Bold', font_size=40)
         self.answ = Label(text="", font_name='Caviar_Dreams_Bold', font_size=40)
         tmplayout = GridLayout(cols=2, spacing=(60, 0))
-        backbtn = RoundButtonBack(text='Go back', font_size=32, size_hint_x = None, font_name='Caviar_Dreams_Bold',  size_hint_y = None, size = (150, 100))
-        Krammerbtn = Button(text='Cramer wiki', font_size=32, font_name='Caviar_Dreams_Bold', size_hint_y = None, size_hint_x = None, background_color=(0, 0, 0, 0), underline = True, size = (200, 100), color = (0, 102/255, 204/255, 1))
+        backbtn = RoundButtonBack(text='Go back', font_size=32, size_hint_x = None, font_name='Caviar_Dreams_Bold',  size_hint_y = None, size = (150, 75))
+        Krammerbtn = Button(text='Cramer wiki', font_size=32, font_name='Caviar_Dreams_Bold', size_hint_y = None, size_hint_x = None, background_color=(0, 0, 0, 0), underline = True, size = (200, 75), color = (0, 102/255, 204/255, 1))
         
         backbtn.bind(on_press = lambda x:self.back())
         Krammerbtn.bind(on_press = lambda x:self.cramer())
@@ -124,49 +123,49 @@ class MainApp(App):
         #THREEVARS SCREEN
         #setting up the layout
         layout4 = GridLayout(cols=7, padding = (30, 10))
-        self.inp1 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.inp2 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.inp3 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.inp4 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.inp5 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.inp6 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.inp7 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.inp8 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.inp9 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.inp10 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.inp11 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
-        self.inp12 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.inp1 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold', height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.inp2 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold', height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.inp3 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold', height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.inp4 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold', height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.inp5 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold', height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.inp6 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold', height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.inp7 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold', height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.inp8 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold', height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.inp9 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold', height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.inp10 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold', height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.inp11 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold', height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
+        self.inp12 = TextInput(text='', font_size=50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold', height = 75, multiline = False, input_filter='float', foreground_color=(2/255, 18/255, 17/255, 1), background_color=(199/255, 225/255, 252/255, 1))
 
         # adding the widgets to the layout:
         layout4.add_widget(self.inp1)
-        layout4.add_widget(Label(text="X + ", font_size = 50, size_hint_x =None, size_hint_y = None))
+        layout4.add_widget(Label(text="x + ", font_size = 50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold'))
         layout4.add_widget(self.inp2)
-        layout4.add_widget(Label(text="Y + ", font_size = 50, size_hint_x = None, size_hint_y = None))
+        layout4.add_widget(Label(text="y + ", font_size = 50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold'))
         layout4.add_widget(self.inp3)
-        layout4.add_widget(Label(text="Z = ", font_size = 50, size_hint_x = None, size_hint_y = None))
+        layout4.add_widget(Label(text="z = ", font_size = 50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold'))
         layout4.add_widget(self.inp4)
 
         layout4.add_widget(self.inp5)
-        layout4.add_widget(Label(text="X + ", font_size = 50, size_hint_x =None, size_hint_y = None))
+        layout4.add_widget(Label(text="x + ", font_size = 50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold'))
         layout4.add_widget(self.inp6)
-        layout4.add_widget(Label(text="Y + ", font_size = 50, size_hint_x = None, size_hint_y = None))
+        layout4.add_widget(Label(text="y + ", font_size = 50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold'))
         layout4.add_widget(self.inp7)
-        layout4.add_widget(Label(text="Z = ", font_size = 50, size_hint_x = None, size_hint_y = None))
+        layout4.add_widget(Label(text="z = ", font_size = 50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold'))
         layout4.add_widget(self.inp8)
 
         layout4.add_widget(self.inp9)
-        layout4.add_widget(Label(text="X + ", font_size = 50, size_hint_x =None, size_hint_y = None))
+        layout4.add_widget(Label(text="x + ", font_size = 50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold'))
         layout4.add_widget(self.inp10)
-        layout4.add_widget(Label(text="Y + ", font_size = 50, size_hint_x = None, size_hint_y = None))
+        layout4.add_widget(Label(text="y + ", font_size = 50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold'))
         layout4.add_widget(self.inp11)
-        layout4.add_widget(Label(text="Z = ", font_size = 50, size_hint_x = None, size_hint_y = None))
+        layout4.add_widget(Label(text="z = ", font_size = 50, size_hint_x = None, size_hint_y = None, font_name='Caviar_Dreams_Bold'))
         layout4.add_widget(self.inp12)
 
         #create a button layout:
-        btnlayout = GridLayout(cols=3, rows=1)
-        krammerbtn = RoundButtonSolve(text="Solve via Cramer", font_size = 32, size_hint_x = None, size_hint_y = None, size = (300, 100))
-        returnbtn = RoundButtonBack(text="Go back", font_size = 32, size_hint_x = None, size_hint_y = None, size = (150, 100))
-        gaussbtn = RoundButton(text="Solve via Gauss", font_size = 32, size_hint_x = None, size_hint_y = None, size = (300, 100))
+        btnlayout = GridLayout(cols=3, rows=1, spacing=(10, 0), padding=(20, 330))
+        krammerbtn = RoundButtonSolve(text="Solve via Cramer", font_size = 32, font_name='Caviar_Dreams_Bold',  size_hint_x = None, size_hint_y = None, size = (290, 80))
+        returnbtn = RoundButtonBack(text="Go back", font_size = 32, font_name='Caviar_Dreams_Bold',  size_hint_x = None, size_hint_y = None, size = (150, 80))
+        gaussbtn = RoundButtonSolve(text="Solve via Gauss", font_size = 32, font_name='Caviar_Dreams_Bold',  size_hint_x = None, size_hint_y = None, size = (290, 80))
         krammerbtn.bind(on_press= lambda x:self.processkrammer3())
         returnbtn.bind(on_press=lambda x:self.back())
         gaussbtn.bind(on_press=lambda x:self.processgauss())
@@ -174,30 +173,28 @@ class MainApp(App):
         btnlayout.add_widget(krammerbtn)
         btnlayout.add_widget(gaussbtn)
 
-        layout4.add_widget(btnlayout)
         threevars.add_widget(layout4)
+        threevars.add_widget(btnlayout)
         sm.add_widget(threevars)
 
         #KRAMMERSOL SCREEN
         layout5 = GridLayout(cols=1, padding = (30, 10))
-        self.krammerdelta = Label(text='', font_size = 32)
-        self.krammerdeltahelp = Label(text='', font_size = 32)
-        self.krammerdelx = Label(text='', font_size = 32)
-        self.krammerdelxhelp = Label(text='', font_size = 32)
-        self.krammerdely = Label(text='', font_size = 32)
-        self.krammerdelyhelp = Label(text='', font_size = 32)
-        self.krammerdelz = Label(text='', font_size = 32)
-        self.krammerdelzhelp = Label(text='', font_size = 32)
-        self.krammerx = Label(text='', font_size = 32)
-        self.krammery = Label(text='', font_size = 32)
-        self.krammerz = Label(text='', font_size = 32)
-        homebtn = Button(text="Go back", font_size = 32, size_hint_x = None, size_hint_y = None, size = (150, 75))
+        self.krammerdelta = Label(text='', font_name='Caviar_Dreams_Bold', font_size = 32)
+        self.krammerdeltahelp = Label(text='', font_name='Caviar_Dreams_Bold', font_size = 32)
+        self.krammerdelx = Label(text='', font_name='Caviar_Dreams_Bold', font_size = 32)
+        self.krammerdelxhelp = Label(text='', font_name='Caviar_Dreams_Bold', font_size = 32)
+        self.krammerdely = Label(text='', font_name='Caviar_Dreams_Bold', font_size = 32)
+        self.krammerdelyhelp = Label(text='', font_name='Caviar_Dreams_Bold', font_size = 32)
+        self.krammerdelz = Label(text='', font_name='Caviar_Dreams_Bold', font_size = 32)
+        self.krammerdelzhelp = Label(text='', font_name='Caviar_Dreams_Bold', font_size = 32)
+        self.krammerx = Label(text='', font_name='Caviar_Dreams_Bold', font_size = 32)
+        self.krammery = Label(text='', font_name='Caviar_Dreams_Bold', font_size = 32)
+        self.krammerz = Label(text='', font_name='Caviar_Dreams_Bold', font_size = 32)
+        homebtn = RoundButtonBack(text="Go back", font_size = 32, font_name='Caviar_Dreams_Bold', size_hint_x = None, size_hint_y = None, size = (150, 75))
         cramerbtn = Button(text='Cramer wiki', font_size=32, font_name='Caviar_Dreams_Bold', size_hint_y = None, size_hint_x = None, background_color=(0, 0, 0, 0), underline = True, size = (200, 100), color = (0, 102/255, 204/255, 1))
-        gaussbtn = Button(text='Cramer wiki', font_size=32, font_name='Caviar_Dreams_Bold', size_hint_y = None, size_hint_x = None, background_color=(0, 0, 0, 0), underline = True, size = (200, 100), color = (0, 102/255, 204/255, 1))
-        layouttmp = GridLayout(cols=3)
+        layouttmp = GridLayout(cols=3, padding=(10, 590), spacing=(50, 0))
         layouttmp.add_widget(homebtn)
         layouttmp.add_widget(cramerbtn)
-        layouttmp.add_widget(gaussbtn)
         layout5.add_widget(self.krammerdelta)
         layout5.add_widget(self.krammerdeltahelp)
         layout5.add_widget(Label(text='', font_size = 32))
@@ -212,64 +209,72 @@ class MainApp(App):
         layout5.add_widget(self.krammerx)
         layout5.add_widget(self.krammery)
         layout5.add_widget(self.krammerz)
-        layout5.add_widget(layouttmp)
+        layout5.add_widget(Label(text='', font_size = 32))
+        layout5.add_widget(Label(text='', font_size = 32))
         homebtn.bind(on_press= lambda x:self.back())
+        cramerbtn.bind(on_press= lambda x:self.cramer())
         krammersol.add_widget(layout5)
+        krammersol.add_widget(layouttmp)
         sm.add_widget(krammersol)
 
         #GAUSSOL SCREEN:
         layout6 = GridLayout(cols=1, padding = (30, 30), spacing = (10, 10))
-        self.entry0 = Label(text='', font_size=32)
-        self.first0 = Label(text='', font_size=32)
-        self.second0 = Label(text='', font_size=32)
-        self.result0 = Label(text='', font_size=32)
+        self.entry0 = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
+        self.first0 = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
+        self.second0 = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
+        self.result0 = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
         
-        self.entry1 = Label(text='', font_size=32)
-        self.first1 = Label(text='', font_size=32)
-        self.second1 = Label(text='', font_size=32)
-        self.result1 = Label(text='', font_size=32)
+        self.entry1 = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
+        self.first1 = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
+        self.second1 = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
+        self.result1 = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
 
-        self.entry2 = Label(text='', font_size=32)
-        self.first2 = Label(text='', font_size=32)
-        self.second2 = Label(text='', font_size=32)
-        self.result2 = Label(text='', font_size=32)
+        self.entry2 = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
+        self.first2 = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
+        self.second2 = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
+        self.result2 = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
 
-        self.answx = Label(text='', font_size=32)
-        self.answy =  Label(text='', font_size=32)
-        self.answz = Label(text='', font_size=32)
-        buttonback = RoundButtonBack(text="Go back", font_size = 32, size_hint_x = None, size_hint_y = None, size = (150, 75))
+        self.answx = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
+        self.answy =  Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
+        self.answz = Label(text='', font_name='Caviar_Dreams_Bold', font_size=32)
+        buttonback = RoundButtonBack(text="Go back", font_size = 32, size_hint_x = None, font_name='Caviar_Dreams_Bold', size_hint_y = None, size = (150, 75))
         
         layout6.add_widget(self.entry0)
         layout6.add_widget(self.first0)
         layout6.add_widget(self.second0)
         layout6.add_widget(self.result0)
-        layout6.add_widget(Label(text='', font_size=32))
+        layout6.add_widget(Label(text='', font_name='Caviar_Dreams_Bold', font_size=32))
 
         layout6.add_widget(self.entry1)
         layout6.add_widget(self.first1)
         layout6.add_widget(self.second1)
         layout6.add_widget(self.result1)
-        layout6.add_widget(Label(text='', font_size=32))
+        layout6.add_widget(Label(text='', font_name='Caviar_Dreams_Bold', font_size=32))
 
         layout6.add_widget(self.entry2)
         layout6.add_widget(self.first2)
         layout6.add_widget(self.second2)
         layout6.add_widget(self.result2)
-        layout6.add_widget(Label(text='', font_size=32))
+        layout6.add_widget(Label(text='', font_name='Caviar_Dreams_Bold', font_size=32))
 
         layout6.add_widget(self.answx)
         layout6.add_widget(self.answy)
         layout6.add_widget(self.answz)
+        layout6.add_widget(Label(text='', font_name='Caviar_Dreams_Bold', font_size=32))
         layout6.add_widget(buttonback)
+        gaussbtn = Button(text='Gauss wiki', font_size=32, font_name='Caviar_Dreams_Bold', size_hint_y = None, size_hint_x = None, background_color=(0, 0, 0, 0), underline = True, size = (200, 100), color = (0, 102/255, 204/255, 1), pos=(250, 20))
+        gaussbtn.bind(on_press=lambda x:self.gauss())
+        buttonback.bind(on_press=lambda x:self.back())
         gausssol.add_widget(layout6)
+        gausssol.add_widget(gaussbtn)
         sm.add_widget(gausssol)
         return sm
     def changetwovars(self):
         sm.current = 'twovars'
-        Window.size = (560, 400)
+        Window.size = (560, 350)
     def changethreevars(self):
         sm.current = 'threevars'
-        Window.size = (800, 600)
+        Window.size = (790, 430)
     def back(self):
         sm.current = 'login'
         Window.size = (600, 337.5)
@@ -307,28 +312,29 @@ class MainApp(App):
             del inp_raw
             gc.collect()
             sm.current = 'krammersol'
-            Window.size = (800, 600)
+            Window.size = (800, 700)
             self.krammerdelta.text = "Δ = (" + str(self.inp1.text) + " * " + str(self.inp6.text) + " * " + str(self.inp11.text) + ") + (" + str(self.inp2.text) + " * " + str(self.inp7.text) + " * " + str(self.inp9.text) + ") + (" + str(self.inp3.text) + " * " + str(self.inp5.text) + " * " + str(self.inp10.text) + ") -"
             self.krammerdeltahelp.text = "- (" + str(self.inp2.text) + " * " + str(self.inp5.text) + " * " + str(self.inp11.text) + ") - (" + str(self.inp1.text) + " * " + str(self.inp7.text) + " * " + str(self.inp10.text) + ") - (" + str(self.inp3.text) + " * " + str(self.inp6.text) + " * " + str(self.inp9.text) + ") = " + str(lib.threeDelta0ret())
-            self.krammerdelx.text = "ΔX = (" + str(self.inp4.text) + " * " + str(self.inp6.text) + " * " + str(self.inp11.text) + ") + (" + str(self.inp2.text) + " * " + str(self.inp7.text) + " * " + str(self.inp12.text) + ") + (" + str(self.inp3.text) + " * " + str(self.inp8.text) + " * " + str(self.inp10.text) + ") - "
+            self.krammerdelx.text = "Δx = (" + str(self.inp4.text) + " * " + str(self.inp6.text) + " * " + str(self.inp11.text) + ") + (" + str(self.inp2.text) + " * " + str(self.inp7.text) + " * " + str(self.inp12.text) + ") + (" + str(self.inp3.text) + " * " + str(self.inp8.text) + " * " + str(self.inp10.text) + ") - "
             self.krammerdelxhelp.text = " - (" + str(self.inp2.text) + " * " + str(self.inp8.text) + " * " + str(self.inp11.text) + ") - (" + str(self.inp4.text) + " * " + str(self.inp7.text) + " * " + str(self.inp10.text) + ") - (" + str(self.inp3.text) + " * " + str(self.inp6.text) + " * " + str(self.inp12.text) + ") = " + str(lib.threeDelta1ret())
-            self.krammerdely.text = "ΔY = (" + str(self.inp1.text) + " * " + str(self.inp8.text) + " * " + str(self.inp11.text) + ") + (" + str(self.inp4.text) + " * " + str(self.inp7.text) + " * " + str(self.inp9.text) + ") + (" + str(self.inp3.text) + " * " + str(self.inp5.text) + " * " + str(self.inp12.text) + ") -"
+            self.krammerdely.text = "Δy = (" + str(self.inp1.text) + " * " + str(self.inp8.text) + " * " + str(self.inp11.text) + ") + (" + str(self.inp4.text) + " * " + str(self.inp7.text) + " * " + str(self.inp9.text) + ") + (" + str(self.inp3.text) + " * " + str(self.inp5.text) + " * " + str(self.inp12.text) + ") -"
             self.krammerdelyhelp.text = "- (" + str(self.inp4.text) + " * " + str(self.inp5.text) + " * " + str(self.inp11.text) + ") - (" + str(self.inp1.text) + " * " + str(self.inp7.text) + " * " + str(self.inp12.text) + ") - (" + str(self.inp3.text) + " * " + str(self.inp8.text) + " * " + str(self.inp9.text) + ") = " + str(lib.threeDelta2ret())
-            self.krammerdelz.text = "ΔZ = (" + str(self.inp1.text) + " * " + str(self.inp6.text) + " * " + str(self.inp12.text) + ") + (" + str(self.inp2.text) + " * " + str(self.inp8.text) + " * " + str(self.inp9.text) + ") + (" + str(self.inp4.text) + " * " + str(self.inp5.text) + " * " + str(self.inp10.text) + ") -"
-            self.krammerdelzhelp.text = "- " + str(self.inp2.text) + " * " + str(self.inp5.text) + " * " + str(self.inp12.text) + ") - (" + str(self.inp1.text) + " * " + str(self.inp8.text) + " * " + str(self.inp10.text) + ") - (" + str(self.inp4.text) + " * " + str(self.inp6.text) + " * " + str(self.inp9.text) + ") = " + str(lib.threeDelta3ret()) 
-            self.krammerx.text = "X = ΔX/Δ = " + str(lib.Xret())
-            self.krammery.text = "Y = ΔY/Δ = " + str(lib.Yret())
-            self.krammerz.text = "Z = ΔZ/Δ = " + str(lib.Zret())
+            self.krammerdelz.text = "Δz = (" + str(self.inp1.text) + " * " + str(self.inp6.text) + " * " + str(self.inp12.text) + ") + (" + str(self.inp2.text) + " * " + str(self.inp8.text) + " * " + str(self.inp9.text) + ") + (" + str(self.inp4.text) + " * " + str(self.inp5.text) + " * " + str(self.inp10.text) + ") -"
+            self.krammerdelzhelp.text = "- (" + str(self.inp2.text) + " * " + str(self.inp5.text) + " * " + str(self.inp12.text) + ") - (" + str(self.inp1.text) + " * " + str(self.inp8.text) + " * " + str(self.inp10.text) + ") - (" + str(self.inp4.text) + " * " + str(self.inp6.text) + " * " + str(self.inp9.text) + ") = " + str(lib.threeDelta3ret()) 
+            self.krammerx.text = "x = Δx/Δ = " + str(lib.Xret())
+            self.krammery.text = "y = Δy/Δ = " + str(lib.Yret())
+            self.krammerz.text = "z = Δz/Δ = " + str(lib.Zret())
         except ValueError:
             print("oopsie! You didn't enter anything!")
     def processgauss(self):
         try:
             inp_raw = [int(self.inp1.text), int(self.inp2.text), int(self.inp3.text), int(self.inp4.text), int(self.inp5.text), int(self.inp6.text), int(self.inp7.text), int(self.inp8.text), int(self.inp9.text), int(self.inp10.text), int(self.inp11.text), int(self.inp12.text)]
             inp = (c_int * 12)(*inp_raw)
+            sm.current = 'gausssol'
+            Window.size = (600, 800)
             lib.Gauss3(inp)
             del inp
             file = open("data.txt", "r")
-            sm.current = 'gausssol'
             input = file.readlines()
             file.close()
             for i in range(len(input)):
