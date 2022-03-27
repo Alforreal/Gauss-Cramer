@@ -45,3 +45,15 @@
         source: 'icons/Github_mark.png'
         center_x: self.parent.center_x
         center_y: self.parent.center_y
+
+<RoundButton@Button>:
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            id: main_color
+            rgba:  (66/255, 245/255, 152/255, 1) 
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [30]

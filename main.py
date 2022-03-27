@@ -23,6 +23,8 @@ class RoundButtonBack(Button):
     pass
 class RoundButtonSolve(Button):
     pass
+class RoundButton(Button):
+    pass
 class GitButton(Button):
     def change_image(self):
         self.ids.gitimage.source = 'icons/Gitmark.png'
@@ -97,17 +99,22 @@ class MainApp(App):
         self.labelx = Label(text="", font_name='Caviar_Dreams_Bold', font_size=40)
         self.labely = Label(text="", font_name='Caviar_Dreams_Bold', font_size=40)
         self.answ = Label(text="", font_name='Caviar_Dreams_Bold', font_size=40)
+        tmplayout = GridLayout(cols=2, spacing=(60, 0))
         backbtn = RoundButtonBack(text='Go back', font_size=32, size_hint_x = None, font_name='Caviar_Dreams_Bold',  size_hint_y = None, size = (150, 100))
-        backbtn.bind(on_press = lambda x:self.back())
+        Krammerbtn = Button(text='Cramer wiki', font_size=32, font_name='Caviar_Dreams_Bold', size_hint_y = None, size_hint_x = None, background_color=(0, 0, 0, 0), underline = True, size = (200, 100), color = (0, 102/255, 204/255, 1))
         
+        backbtn.bind(on_press = lambda x:self.back())
+        Krammerbtn.bind(on_press = lambda x:self.cramer())
+        tmplayout.add_widget(backbtn)
+        tmplayout.add_widget(Krammerbtn)
+
         layout3.add_widget(self.labeldelta)
         layout3.add_widget(self.labeldeltax)
         layout3.add_widget(self.labeldeltay)
         layout3.add_widget(self.labelx)
         layout3.add_widget(self.labely)
-        # layout3.add_widget(Label(text="", font_name='Caviar_Dreams_Bold', font_size=40))
         layout3.add_widget(self.answ)
-        layout3.add_widget(backbtn)
+        layout3.add_widget(tmplayout)
 
         #adding the layout and the screen to their parents:
         sltwo.add_widget(layout3)
@@ -157,9 +164,9 @@ class MainApp(App):
 
         #create a button layout:
         btnlayout = GridLayout(cols=3, rows=1)
-        krammerbtn = Button(text="Solve via Cramer", font_size = 32, size_hint_x = None, size_hint_y = None, size = (300, 100))
-        returnbtn = Button(text="Go back", font_size = 32, size_hint_x = None, size_hint_y = None, size = (150, 100))
-        gaussbtn = Button(text="Solve via Gauss", font_size = 32, size_hint_x = None, size_hint_y = None, size = (300, 100))
+        krammerbtn = RoundButtonSolve(text="Solve via Cramer", font_size = 32, size_hint_x = None, size_hint_y = None, size = (300, 100))
+        returnbtn = RoundButtonBack(text="Go back", font_size = 32, size_hint_x = None, size_hint_y = None, size = (150, 100))
+        gaussbtn = RoundButton(text="Solve via Gauss", font_size = 32, size_hint_x = None, size_hint_y = None, size = (300, 100))
         krammerbtn.bind(on_press= lambda x:self.processkrammer3())
         returnbtn.bind(on_press=lambda x:self.back())
         gaussbtn.bind(on_press=lambda x:self.processgauss())
@@ -185,6 +192,12 @@ class MainApp(App):
         self.krammery = Label(text='', font_size = 32)
         self.krammerz = Label(text='', font_size = 32)
         homebtn = Button(text="Go back", font_size = 32, size_hint_x = None, size_hint_y = None, size = (150, 75))
+        cramerbtn = Button(text='Cramer wiki', font_size=32, font_name='Caviar_Dreams_Bold', size_hint_y = None, size_hint_x = None, background_color=(0, 0, 0, 0), underline = True, size = (200, 100), color = (0, 102/255, 204/255, 1))
+        gaussbtn = Button(text='Cramer wiki', font_size=32, font_name='Caviar_Dreams_Bold', size_hint_y = None, size_hint_x = None, background_color=(0, 0, 0, 0), underline = True, size = (200, 100), color = (0, 102/255, 204/255, 1))
+        layouttmp = GridLayout(cols=3)
+        layouttmp.add_widget(homebtn)
+        layouttmp.add_widget(cramerbtn)
+        layouttmp.add_widget(gaussbtn)
         layout5.add_widget(self.krammerdelta)
         layout5.add_widget(self.krammerdeltahelp)
         layout5.add_widget(Label(text='', font_size = 32))
@@ -199,7 +212,7 @@ class MainApp(App):
         layout5.add_widget(self.krammerx)
         layout5.add_widget(self.krammery)
         layout5.add_widget(self.krammerz)
-        layout5.add_widget(homebtn)
+        layout5.add_widget(layouttmp)
         homebtn.bind(on_press= lambda x:self.back())
         krammersol.add_widget(layout5)
         sm.add_widget(krammersol)
@@ -224,7 +237,8 @@ class MainApp(App):
         self.answx = Label(text='', font_size=32)
         self.answy =  Label(text='', font_size=32)
         self.answz = Label(text='', font_size=32)
-
+        buttonback = RoundButtonBack(text="Go back", font_size = 32, size_hint_x = None, size_hint_y = None, size = (150, 75))
+        
         layout6.add_widget(self.entry0)
         layout6.add_widget(self.first0)
         layout6.add_widget(self.second0)
@@ -246,6 +260,7 @@ class MainApp(App):
         layout6.add_widget(self.answx)
         layout6.add_widget(self.answy)
         layout6.add_widget(self.answz)
+        layout6.add_widget(buttonback)
         gausssol.add_widget(layout6)
         sm.add_widget(gausssol)
         return sm
