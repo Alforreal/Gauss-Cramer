@@ -13,7 +13,7 @@ Ix + Jy + Kz = L
 ```
 *where* A, B, C, D, E, F, G, H, I, J, K and L are rational numbers, meaning they are **not imaginary**
 
-# Installation from source
+## Installation from source
 ### Linux
 At the moment the only way you can use the app is by cloning the repository. Before doing that you have to install **[Python 3.8](https://www.python.org/downloads/release/python-380/)***(as of writing this, the code supports only python 3.9 or lower([link to the github issue](https://github.com/kivymd/KivyMD/issues/1166#issuecomment-1018337569)), I've used Python 3.8 and everything worked fine. Maybe Python 3.10 will be added later, but only time will tell)*, **[Kivy](https://kivy.org/doc/stable/gettingstarted/installation.html)**, **[Ctypes](https://pypi.org/project/ctypes-callable/)** and **[webbrowser](https://docs.python.org/3/library/webbrowser.html)**. 
 After you have installed them, clone the github repo:
